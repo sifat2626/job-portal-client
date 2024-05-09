@@ -3,11 +3,17 @@ import logo from "../../../public/logo.jpg";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
 function Navbar() {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const navList = (
     <>
       <li>
         <NavLink to={"/"}>Home</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/all-jobs"}>All Jobs</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/blogs"}>Blogs</NavLink>
       </li>
 
       {!user && (
@@ -67,11 +73,8 @@ function Navbar() {
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                />
+              <div title={user.displayName} className="w-10 rounded-full">
+                <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
               </div>
             </div>
             <ul
@@ -79,16 +82,16 @@ function Navbar() {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
+                <Link to={"/add-job"}>Add Job</Link>
               </li>
               <li>
-                <a>Settings</a>
+                <Link to={"/my-jobs"}>My Jobs</Link>
               </li>
               <li>
-                <a>Logout</a>
+                <Link to={"/applied-jobs"}>Applied Jobs</Link>
+              </li>
+              <li>
+                <Link onClick={logOut}>Logout</Link>
               </li>
             </ul>
           </div>
