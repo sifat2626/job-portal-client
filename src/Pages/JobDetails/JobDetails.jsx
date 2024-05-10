@@ -3,6 +3,8 @@ import ResumeModal from "../../components/ResumeModal/ResumeModal";
 
 function JobDetails() {
   const { job } = useLoaderData();
+
+  console.log(job);
   const {
     _id,
     jobTitle,

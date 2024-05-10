@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import JobByCategoryCard from "../../components/JobByCategoryCard/JobByCategoryCard";
+import { Link } from "react-router-dom";
 
 function JobByCategory() {
   const [jobs, setJobs] = useState([]);
@@ -21,6 +22,7 @@ function JobByCategory() {
           <Tab>Remote</Tab>
           <Tab>Part-Time</Tab>
           <Tab>Hybrid</Tab>
+          <Tab>All Jobs</Tab>
         </TabList>
 
         <TabPanel>
@@ -57,6 +59,23 @@ function JobByCategory() {
               .map((filteredJob) => (
                 <JobByCategoryCard key={filteredJob._id} job={filteredJob} />
               ))}
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6">
+            {jobs.slice(0, 7).map((filteredJob) => (
+              <JobByCategoryCard key={filteredJob._id} job={filteredJob} />
+            ))}
+            {jobs.length > 7 && (
+              <div className="flex items-center justify-center ">
+                <Link
+                  to="/all-jobs"
+                  className="px-4 py-2 bg-green-400 font-medium text-white rounded-lg"
+                >
+                  View More...
+                </Link>
+              </div>
+            )}
           </div>
         </TabPanel>
       </Tabs>

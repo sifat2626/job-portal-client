@@ -1,14 +1,33 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
-function AddJob() {
+import { useParams } from "react-router-dom";
+function UpdateJob() {
   const { user } = useContext(AuthContext);
   const [startDate, setStartDate] = useState(new Date());
-  const [deadLine, setdeadLine] = useState(new Date());
+  const [deadLine, setDeadLine] = useState(new Date());
+  const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+
+  const [job, setJob] = useState(null);
+  const getData = async () => {
+    const result = await axios.get(
+      `${import.meta.env.VITE_API_URL}/jobs/${id}`,
+      { withCredentials: true }
+    );
+    setJob(result.data.job);
+    setStartDate(job.jobPostingDate);
+    setDeadLine(job.applicationDeadline);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,6 +39,7 @@ function AddJob() {
       const description = form.description.value;
       const min_salary = form.min_salary.value;
       const max_salary = form.max_salary.value;
+      console.log(category);
 
       if (min_salary > max_salary) {
         return toast.error("Min salary should be less than min salary");
@@ -46,18 +66,19 @@ function AddJob() {
 
       // console.log(JSON.stringify(jobData));
 
-      const result = await axios.post(
-        `${import.meta.env.VITE_API_URL}/jobs`,
+      const result = await axios.patch(
+        `${import.meta.env.VITE_API_URL}/jobs/${job._id}`,
         jobData,
         {
           withCredentials: true,
         }
       );
-      if (result.status === 201) {
-        toast.success("Job Created Successfully");
+      console.log(result);
+      if (result.status === 200) {
+        toast.success("Job Updated Successfully");
         form.reset();
         setStartDate(new Date());
-        setdeadLine(new Date());
+        setDeadLine(new Date());
       } else {
         throw new Error(result.statusText);
       }
@@ -65,9 +86,10 @@ function AddJob() {
       toast.error(error.message);
     }
   };
+  if (loading) return "Loading...";
   return (
     <div className="">
-      <h2>Add a Job</h2>
+      <h2>Update Job</h2>
       <form onSubmit={(e) => handleSubmit(e)} className="card-body">
         <div className="form-control">
           <label className="label">
@@ -75,7 +97,7 @@ function AddJob() {
           </label>
           <input
             type="text"
-            placeholder="Job Title"
+            defaultValue={job.jobTitle}
             name="title"
             className="input input-bordered"
             required
@@ -88,6 +110,7 @@ function AddJob() {
           <input
             type="text"
             placeholder="photo"
+            defaultValue={job.jobBannerURL}
             name="photo"
             className="input input-bordered"
             required
@@ -96,6 +119,7 @@ function AddJob() {
         <label htmlFor="">Category</label>
         <select
           name="category"
+          defaultValue={job.jobCategory}
           className="select select-bordered w-full max-w-xs"
         >
           <option value={"On Site"}>On Site</option>
@@ -110,6 +134,7 @@ function AddJob() {
           <input
             type="number"
             placeholder="min. salary"
+            defaultValue={job.min_salary}
             name="min_salary"
             className="input input-bordered"
             required
@@ -122,6 +147,7 @@ function AddJob() {
           <input
             type="number"
             placeholder="max. salary"
+            defaultValue={job.max_salary}
             name="max_salary"
             className="input input-bordered"
             required
@@ -134,6 +160,7 @@ function AddJob() {
           <input
             type="text"
             placeholder="description"
+            defaultValue={job.jobDescription}
             name="description"
             className="input input-bordered"
             required
@@ -145,6 +172,7 @@ function AddJob() {
           </label>
           <DatePicker
             selected={startDate}
+            defaultValue={job.jobPostingDate}
             showIcon
             dateFormat="dd/MM/yyyy"
             onChange={(date) => setStartDate(date)}
@@ -157,17 +185,18 @@ function AddJob() {
           <DatePicker
             showIcon
             dateFormat="dd/MM/yyyy"
+            defaultValue={job.applicationDeadline}
             minDate={startDate}
             selected={deadLine}
-            onChange={(date) => setdeadLine(date)}
+            onChange={(date) => setDeadLine(date)}
           />
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Add Job</button>
+          <button className="btn btn-primary">Update Job</button>
         </div>
       </form>
     </div>
   );
 }
 
-export default AddJob;
+export default UpdateJob;

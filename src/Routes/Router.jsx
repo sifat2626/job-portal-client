@@ -12,6 +12,8 @@ import PrivateRoute from "./PrivateRoute";
 import JobDetails from "../Pages/JobDetails/JobDetails";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import UserProfile from "../Pages/UserProfile/UserProfile";
+import UpdateJob from "../Pages/UpdateJob/UpdateJob";
+import axios from "axios";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +59,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/update-job/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateJob />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/my-jobs",
         element: (
           <PrivateRoute>
@@ -79,8 +89,15 @@ const router = createBrowserRouter([
             <JobDetails />
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`${import.meta.env.VITE_API_URL}/jobs/${params.id}`),
+        loader: async ({ params }) => {
+          const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/jobs/${params.id}`,
+            {
+              credentials: "include", // Include credentials (cookies) in the request
+            }
+          );
+          return await response.json();
+        },
       },
     ],
   },
