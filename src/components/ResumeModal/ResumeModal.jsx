@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 function ResumeModal({ id }) {
   const { user } = useContext(AuthContext);
@@ -10,19 +11,24 @@ function ResumeModal({ id }) {
     const form = e.target;
     const resume = form.resume.value;
     const applyData = {
+      jobId: id,
       username: user.displayName,
       email: user.email,
       resumeURL: resume,
     };
     console.log(applyData);
     const result = await axios.post(
-      `${import.meta.env.VITE_API_URL}/jobs/${id}/apply`,
+      `${import.meta.env.VITE_API_URL}/jobs/apply`,
       applyData,
       {
         withCredentials: true,
       }
     );
-    console.log(result);
+    if (result.status === 201) {
+      toast.success("successfully applied");
+    } else {
+      toast.error("something went wrong!");
+    }
   };
   return (
     <>

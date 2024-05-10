@@ -55,6 +55,9 @@ function AddJob() {
       );
       if (result.status === 201) {
         toast.success("Job Created Successfully");
+        form.reset();
+        setStartDate(new Date());
+        setdeadLine(new Date());
       } else {
         throw new Error(result.statusText);
       }

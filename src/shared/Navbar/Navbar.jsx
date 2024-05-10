@@ -82,6 +82,9 @@ function Navbar() {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
+                <Link to={"/profile"}>User Profile</Link>
+              </li>
+              <li>
                 <Link to={"/add-job"}>Add Job</Link>
               </li>
               <li>
