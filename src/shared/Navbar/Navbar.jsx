@@ -67,7 +67,7 @@ function Navbar() {
       </div>
       <div className="navbar-end">
         {user && (
-          <div className="dropdown dropdown-end">
+          <div className="dropdown dropdown-end z-50">
             <div
               tabIndex={0}
               role="button"
