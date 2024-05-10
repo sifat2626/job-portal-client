@@ -1,15 +1,10 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
+import { formatDate } from "../../utils/utils";
 
 function TableRow({ job, index }) {
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const day = date.getDate().toString().padStart(2, "0");
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
-  };
   const {
+    _id,
     jobTitle,
     jobPostingDate,
     applicationDeadline,
@@ -26,7 +21,12 @@ function TableRow({ job, index }) {
         ${min_salary} - {max_salary}
       </td>
       <td>
-        <Link>Details</Link>
+        <Link
+          to={`/jobs/${_id}`}
+          className="bg-green-400 text-white font-medium px-4 py-2 rounded-lg"
+        >
+          Details
+        </Link>
       </td>
     </tr>
   );
