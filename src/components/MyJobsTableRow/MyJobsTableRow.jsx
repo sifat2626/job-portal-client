@@ -4,11 +4,13 @@ import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { useQueryClient } from "@tanstack/react-query"; // Import for mutations
 
 /* eslint-disable react/prop-types */
 function MyJobsTableRow({ job }) {
+  const queryClient = useQueryClient(); // Access query client for mutations
+
   const handleDelete = async () => {
-    console.log("delete");
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -17,19 +19,26 @@ function MyJobsTableRow({ job }) {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        const result = axios.delete(
+        const response = await axios.delete(
           `${import.meta.env.VITE_API_URL}/jobs/${job._id}`,
           { withCredentials: true }
         );
 
-        if (result.status === 200) {
+        if (response.status === 200) {
           Swal.fire({
             title: "Deleted!",
-            text: "Your file has been deleted.",
+            text: "Your job has been deleted.",
             icon: "success",
           });
+
+          // Invalidate relevant queries:
+          // - Consider invalidating the query that fetches the list of jobs
+          //   to ensure it reflects the updated data after deletion.
+          // - You might need to adjust this based on how your job list query
+          //   is defined and used in your application.
+          queryClient.invalidateQueries(["jobs"]);
         }
       }
     });
@@ -46,6 +55,7 @@ function MyJobsTableRow({ job }) {
     jobPostingDate,
     applicationDeadline,
   } = job;
+
   return (
     <tr>
       <td></td>

@@ -6,6 +6,7 @@ import Register from "../Pages/Register/Register";
 import AllJobs from "../Pages/AllJobs/AllJobs";
 import Blogs from "../Pages/Blogs/Blogs";
 import AddJob from "../Pages/AddJob/AddJob";
+import AddBlog from "../Pages/AddBlog/AddBlog";
 import MyJobs from "../Pages/MyJobs/MyJobs";
 import AppliedJobs from "../Pages/AppliedJobs/AppliedJobs";
 import PrivateRoute from "./PrivateRoute";
@@ -14,6 +15,8 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import UpdateJob from "../Pages/UpdateJob/UpdateJob";
 import axios from "axios";
+import Blog from "../Pages/Blog/Blog";
+import Blog1 from "../components/Blogs/Blog1";
 
 const router = createBrowserRouter([
   {
@@ -41,7 +44,18 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs />,
+        loader: () => {
+          return fetch(`${import.meta.env.VITE_API_URL}/blogs`);
+        },
       },
+      {
+        path: "/blogs/:id",
+        element: <Blog />,
+        loader: ({ params }) => {
+          return fetch(`${import.meta.env.VITE_API_URL}/blogs/${params.id}`);
+        },
+      },
+
       {
         path: "/profile",
         element: (
@@ -59,12 +73,27 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/add-blog",
+        element: (
+          <PrivateRoute>
+            <AddBlog />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/update-job/:id",
         element: (
           <PrivateRoute>
             <UpdateJob />
           </PrivateRoute>
         ),
+        loader: async ({ params }) => {
+          const { data } = await axios.get(
+            `${import.meta.env.VITE_API_URL}/jobs/${params.id}`,
+            { withCredentials: true }
+          );
+          return data.job;
+        },
       },
       {
         path: "/my-jobs",

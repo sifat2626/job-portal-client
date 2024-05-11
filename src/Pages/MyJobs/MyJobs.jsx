@@ -2,24 +2,31 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import MyJobsTableRow from "../../components/MyJobsTableRow/MyJobsTableRow";
+import { useQuery } from "@tanstack/react-query";
 
 function MyJobs() {
+  const {
+    isLoading,
+    data: jobs = [],
+    refetch,
+    isError,
+    error,
+  } = useQuery({
+    queryFn: () => getData(),
+    queryKey: ["my-jobs"],
+  });
+
   const { user } = useContext(AuthContext);
-  const [jobs, setJobs] = useState([]);
   const getData = async () => {
-    const result = await axios.get(
+    const { data } = await axios.get(
       `${import.meta.env.VITE_API_URL}/jobs/email/${user.email}`,
       {
         withCredentials: true,
       }
     );
-    setJobs(result.data.jobs);
-    console.log(result.data.jobs);
+    return data.jobs;
   };
-  useEffect(() => {
-    getData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
   return (
     <div>
       <div className="overflow-x-auto">

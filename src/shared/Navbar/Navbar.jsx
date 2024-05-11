@@ -29,7 +29,7 @@ function Navbar() {
     </>
   );
   return (
-    <div className="navbar ">
+    <div className="navbar">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -92,6 +92,9 @@ function Navbar() {
               </li>
               <li>
                 <Link to={"/applied-jobs"}>Applied Jobs</Link>
+              </li>
+              <li>
+                <Link to={"/add-blog"}>Add Blog</Link>
               </li>
               <li>
                 <Link onClick={logOut}>Logout</Link>

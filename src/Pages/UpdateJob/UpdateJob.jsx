@@ -5,29 +5,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 function UpdateJob() {
   const { user } = useContext(AuthContext);
-  const [startDate, setStartDate] = useState(new Date());
-  const [deadLine, setDeadLine] = useState(new Date());
-  const [loading, setLoading] = useState(true);
-  const { id } = useParams();
-
-  const [job, setJob] = useState(null);
-  const getData = async () => {
-    const result = await axios.get(
-      `${import.meta.env.VITE_API_URL}/jobs/${id}`,
-      { withCredentials: true }
-    );
-    setJob(result.data.job);
-    setStartDate(job.jobPostingDate);
-    setDeadLine(job.applicationDeadline);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+  const [startDate, setStartDate] = useState(useLoaderData().jobPostingDate);
+  const [deadLine, setDeadLine] = useState(useLoaderData().applicationDeadline);
+  const [job, setJob] = useState(useLoaderData());
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +25,8 @@ function UpdateJob() {
       console.log(category);
 
       if (min_salary > max_salary) {
-        return toast.error("Min salary should be less than min salary");
+        console.log(min_salary, max_salary);
+        return toast.error("min salary should be less than max salary");
       }
 
       const jobData = {
@@ -76,9 +60,9 @@ function UpdateJob() {
       console.log(result);
       if (result.status === 200) {
         toast.success("Job Updated Successfully");
-        form.reset();
-        setStartDate(new Date());
-        setDeadLine(new Date());
+        // setStartDate(new Date());
+        // setDeadLine(new Date());
+        setJob({ ...job, jobData });
       } else {
         throw new Error(result.statusText);
       }
@@ -86,7 +70,6 @@ function UpdateJob() {
       toast.error(error.message);
     }
   };
-  if (loading) return "Loading...";
   return (
     <div className="">
       <h2>Update Job</h2>
