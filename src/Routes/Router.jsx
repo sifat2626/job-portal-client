@@ -16,7 +16,6 @@ import UserProfile from "../Pages/UserProfile/UserProfile";
 import UpdateJob from "../Pages/UpdateJob/UpdateJob";
 import axios from "axios";
 import Blog from "../Pages/Blog/Blog";
-import Blog1 from "../components/Blogs/Blog1";
 
 const router = createBrowserRouter([
   {

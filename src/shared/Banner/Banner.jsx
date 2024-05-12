@@ -1,5 +1,5 @@
 // Import Swiper React components
-import img1 from "../../assets/images/carousel1.jpg";
+import img1 from "../../assets/images/banner1.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles

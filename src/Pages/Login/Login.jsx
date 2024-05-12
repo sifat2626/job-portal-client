@@ -55,7 +55,7 @@ const Login = () => {
       console.log(result);
       navigate(from, { replace: true });
     } catch (error) {
-      toast.error(error?.message);
+      toast.error("Email or password didn't match!");
     }
   };
 

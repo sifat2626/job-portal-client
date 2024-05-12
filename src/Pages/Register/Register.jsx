@@ -53,7 +53,7 @@ const Registration = () => {
       navigate(from, { replace: true });
       toast.success("Sign Up successful");
     } catch (error) {
-      toast.error(error.message);
+      toast.error("user already exists!");
     }
   };
   return (
