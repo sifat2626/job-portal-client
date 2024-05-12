@@ -31,7 +31,7 @@ function AddBlog() {
     <form className="card-body" onSubmit={(e) => handleSubmit(e)}>
       <div className="form-control">
         <label className="label">
-          <span className="label-text">Blog Title</span>
+          <span className="label-text font-semibold text-xl">Blog Title</span>
         </label>
         <input
           type="text"
@@ -43,7 +43,7 @@ function AddBlog() {
       </div>
       <div className="form-control">
         <label className="label">
-          <span className="label-text">Content</span>
+          <span className="label-text font-bold text-lg">Content</span>
         </label>
         {/* <textarea
           type="textArea"
@@ -61,7 +61,7 @@ function AddBlog() {
         />
       </div>
       <div className="form-control mt-6">
-        <button className="btn btn-primary">Add Blog</button>
+        <button className="btn btn-primary font-bold text-xl">Add Blog</button>
       </div>
     </form>
   );

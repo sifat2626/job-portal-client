@@ -30,7 +30,10 @@ function ResumeModal({ id, job, setJob }) {
       );
       if (result.status === 201) {
         toast.success("successfully applied");
-        setJob((job) => [...job, job.jobApplicantsNumber + 1]);
+        setJob((job) => ({
+          ...job,
+          jobApplicantsNumber: job.jobApplicantsNumber + 1,
+        }));
       } else {
         toast.error("something went wrong!");
       }
