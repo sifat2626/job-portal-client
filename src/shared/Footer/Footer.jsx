@@ -1,33 +1,11 @@
 import logo from "/title.jpg";
 function Footer() {
   return (
-    <div className="mt-20">
-      <footer className="footer p-10 bg-base-200 text-base-content">
-        <nav>
-          <h6 className="footer-title">Jobs</h6>
-          <a className="link link-hover">On Site</a>
-          <a className="link link-hover">Remote</a>
-          <a className="link link-hover">Hybrid</a>
-          <a className="link link-hover">Part Time</a>
-        </nav>
-        <nav>
-          <h6 className="footer-title">Company</h6>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Addess</a>
-        </nav>
-        <nav>
-          <h6 className="footer-title">Legal</h6>
-          <a className="link link-hover">Terms of use</a>
-          <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
-        </nav>
-      </footer>
-      <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
+    <div className="mt-20 pt-12 bg-job text-white px-[5%]">
+      <footer className="footer bg-job text-white px-10 py-4">
         <aside className="items-center grid-flow-col gap-4">
           <img src={logo} alt="" className="h-8 w-8" />
-          <p className="font-semibold text-lg">Webby</p>
+          <p className="font-extrabold text-3xl">Webby</p>
         </aside>
         <nav className="md:place-self-center md:justify-self-end">
           <div className="grid grid-flow-col gap-4">
@@ -67,6 +45,32 @@ function Footer() {
           </div>
         </nav>
       </footer>
+      <footer className="footer bg-job text-white p-10 text-lg font-semibold">
+        <nav>
+          <h6 className="footer-title">Jobs</h6>
+          <a className="link link-hover">On Site</a>
+          <a className="link link-hover">Remote</a>
+          <a className="link link-hover">Hybrid</a>
+          <a className="link link-hover">Part Time</a>
+        </nav>
+        <nav>
+          <h6 className="footer-title">Company</h6>
+          <a className="link link-hover">About us</a>
+          <a className="link link-hover">Contact</a>
+          <a className="link link-hover">Jobs</a>
+          <a className="link link-hover">Addess</a>
+        </nav>
+        <nav>
+          <h6 className="footer-title">Legal</h6>
+          <a className="link link-hover">Terms of use</a>
+          <a className="link link-hover">Privacy policy</a>
+          <a className="link link-hover">Cookie policy</a>
+        </nav>
+      </footer>
+
+      <div className="text-center py-8 text-lg font-semibold">
+        <p>Copyright © 2024 - All right reserved by Gable Ltd</p>
+      </div>
     </div>
   );
 }

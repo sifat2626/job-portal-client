@@ -21,10 +21,6 @@ function AddJob() {
       const min_salary = form.min_salary.value;
       const max_salary = form.max_salary.value;
 
-      if (min_salary > max_salary) {
-        return toast.error("Min salary should be less than min salary");
-      }
-
       const jobData = {
         jobTitle: title,
         jobBannerURL: photo,
@@ -62,7 +58,8 @@ function AddJob() {
         throw new Error(result.statusText);
       }
     } catch (error) {
-      toast.error(error.message);
+      console.log(error.response.data.error);
+      toast.error(error.response.data.error);
     }
   };
   return (

@@ -16,7 +16,12 @@ function JobByCategory() {
   };
   return (
     <div className="text-center">
-      <Tabs>
+      <div className="mb-8">
+        <h3 className="text-4xl font-bold bg-job text-white py-16">
+          Explore Types of jobs
+        </h3>
+      </div>
+      <Tabs className={"p-8"}>
         <TabList>
           <Tab>On Site</Tab>
           <Tab>Remote</Tab>

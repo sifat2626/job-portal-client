@@ -117,15 +117,6 @@ const router = createBrowserRouter([
             <JobDetails />
           </PrivateRoute>
         ),
-        loader: async ({ params }) => {
-          const response = await fetch(
-            `${import.meta.env.VITE_API_URL}/jobs/${params.id}`,
-            {
-              credentials: "include", // Include credentials (cookies) in the request
-            }
-          );
-          return await response.json();
-        },
       },
     ],
   },

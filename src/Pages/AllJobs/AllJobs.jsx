@@ -27,7 +27,7 @@ function AllJobs() {
 
   return (
     <div className="">
-      <div>
+      <div className="mb-8">
         <form
           className="flex max-w-md mx-auto gap-2"
           action=""
@@ -37,7 +37,7 @@ function AllJobs() {
             type="text"
             name="search"
             placeholder="Type here"
-            className="input input-bordered input-primary w-full max-w-xs"
+            className="input input-bordered  w-full max-w-xs"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />

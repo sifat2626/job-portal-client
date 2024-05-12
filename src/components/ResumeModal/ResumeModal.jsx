@@ -4,35 +4,47 @@ import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-function ResumeModal({ id }) {
+function ResumeModal({ id, job, setJob }) {
   const { user } = useContext(AuthContext);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const form = e.target;
-    const resume = form.resume.value;
-    const applyData = {
-      jobId: id,
-      username: user.displayName,
-      email: user.email,
-      resumeURL: resume,
-    };
-    console.log(applyData);
-    const result = await axios.post(
-      `${import.meta.env.VITE_API_URL}/jobs/apply`,
-      applyData,
-      {
-        withCredentials: true,
+    try {
+      const form = e.target;
+      const resume = form.resume.value;
+      if (job.applicationDeadline > Date.now()) {
+        return toast.error("Deadline is over!");
       }
-    );
-    if (result.status === 201) {
-      toast.success("successfully applied");
-    } else {
-      toast.error("something went wrong!");
+      const applyData = {
+        jobId: id,
+        username: user.displayName,
+        email: user.email,
+        resumeURL: resume,
+      };
+      console.log(applyData);
+      const result = await axios.post(
+        `${import.meta.env.VITE_API_URL}/jobs/apply`,
+        applyData,
+        {
+          withCredentials: true,
+        }
+      );
+      if (result.status === 201) {
+        toast.success("successfully applied");
+        setJob((job) => [...job, job.jobApplicantsNumber + 1]);
+      } else {
+        toast.error("something went wrong!");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.error);
     }
   };
   return (
     <>
-      <label htmlFor="my_modal_7" className="btn">
+      <label
+        htmlFor="my_modal_7"
+        className="btn bg-job text-white font-bold text-xl mt-4"
+      >
         Apply
       </label>
 

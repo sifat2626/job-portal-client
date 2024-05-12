@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -23,11 +23,6 @@ function UpdateJob() {
       const min_salary = form.min_salary.value;
       const max_salary = form.max_salary.value;
       console.log(category);
-
-      if (min_salary > max_salary) {
-        console.log(min_salary, max_salary);
-        return toast.error("min salary should be less than max salary");
-      }
 
       const jobData = {
         jobTitle: title,
@@ -67,7 +62,7 @@ function UpdateJob() {
         throw new Error(result.statusText);
       }
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.response.data.error);
     }
   };
   return (
