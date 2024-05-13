@@ -22,7 +22,7 @@ function JobByCategory() {
           Explore Types of jobs
         </h3>
       </div>
-      <Tabs className={"custom-container "}>
+      <Tabs className={"max-w-6xl mx-auto px-2"}>
         <TabList
           className={
             "bg-white dark:bg-gray-700 max-w-2xl shadow-md mx-auto py-4 rounded-lg mb-8 flex justify-evenly"
@@ -30,35 +30,35 @@ function JobByCategory() {
         >
           <Tab
             className={
-              "border-job dark:text-white border-2 cursor-pointer px-4 py-2 rounded-lg"
+              "border-job text-sm md:text-base dark:text-white border-2 cursor-pointer px-2 md:px-4 py-2 rounded-lg"
             }
           >
             On Site
           </Tab>
           <Tab
             className={
-              "border-job dark:text-white border-2 cursor-pointer px-4 py-2 rounded-lg"
+              "border-job text-sm md:text-base dark:text-white border-2 cursor-pointer px-4 py-2 rounded-lg"
             }
           >
             Remote
           </Tab>
           <Tab
             className={
-              "border-job dark:text-white border-2 cursor-pointer px-4 py-2 rounded-lg"
+              "border-job text-sm md:text-base dark:text-white border-2 cursor-pointer px-4 py-2 rounded-lg"
             }
           >
             Part-Time
           </Tab>
           <Tab
             className={
-              "border-job dark:text-white border-2 cursor-pointer px-4 py-2 rounded-lg"
+              "border-job text-sm md:text-base dark:text-white border-2 cursor-pointer px-4 py-2 rounded-lg"
             }
           >
             Hybrid
           </Tab>
           <Tab
             className={
-              "border-job dark:text-white border-2 cursor-pointer px-4 py-2 rounded-lg"
+              "border-job text-sm md:text-base dark:text-white border-2 cursor-pointer px-4 py-2 rounded-lg"
             }
           >
             All Jobs

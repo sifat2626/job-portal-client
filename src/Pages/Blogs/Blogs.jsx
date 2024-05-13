@@ -8,12 +8,14 @@ function Blogs() {
         {blogs.map((blog) => (
           <div
             key={blog._id}
-            className="flex justify-between border-4 p-4 mb-4 rounded-lg items-center"
+            className="flex flex-col md:flex-row justify-between border-4 p-4 mb-4 rounded-lg items-center"
           >
-            <h3 className="lg:text-xl font-semibold">{blog.title}</h3>
+            <h3 className="lg:text-xl font-semibold max-w-sm lg:max-w-4xl">
+              {blog.title}
+            </h3>
             <Link
               to={`/blogs/${blog._id}`}
-              className="bg-green-400 text-white px-4 py-2 rounded-lg"
+              className="bg-green-400 mt-4 md:mt-0 md:w-auto text-white px-4 py-2 rounded-lg"
             >
               View Details
             </Link>
