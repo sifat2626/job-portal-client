@@ -40,7 +40,7 @@ function JobDetails() {
   } = job;
   console.log(job);
   return (
-    <div className="max-w-lg mx-auto bg-green-50 p-8 rounded-xl">
+    <div className="max-w-lg mx-auto bg-green-50 p-8 rounded-xl mt-16">
       <h2 className="text-center text-job font-bold text-3xl">Job Details</h2>
       <div className="py-8">
         <img src={jobBannerURL} alt="" className="h-64 w-full rounded-3xl" />

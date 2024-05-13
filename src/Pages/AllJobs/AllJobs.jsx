@@ -26,10 +26,10 @@ function AllJobs() {
   };
 
   return (
-    <div className="">
-      <div className="mb-8">
+    <div className="mt-16">
+      <div className="mb-8 ">
         <form
-          className="flex max-w-md mx-auto gap-2"
+          className="flex max-w-md mx-auto gap-2 "
           action=""
           onSubmit={(e) => handleSearch(e)}
         >
@@ -46,7 +46,7 @@ function AllJobs() {
           </button>
         </form>
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto font-semibold">
         <table className="table table-zebra">
           {/* head */}
           <thead>

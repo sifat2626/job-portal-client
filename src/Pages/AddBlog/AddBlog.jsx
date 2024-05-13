@@ -28,42 +28,47 @@ function AddBlog() {
     }
   };
   return (
-    <form className="card-body" onSubmit={(e) => handleSubmit(e)}>
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text font-semibold text-xl">Blog Title</span>
-        </label>
-        <input
-          type="text"
-          placeholder="Blog Title"
-          name="title"
-          className="input input-bordered"
-          required
-        />
-      </div>
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text font-bold text-lg">Content</span>
-        </label>
-        {/* <textarea
+    <div className="mt-16">
+      <h2 className="text-3xl text-job font-bold text-center">Create a blog</h2>
+      <form className="card-body" onSubmit={(e) => handleSubmit(e)}>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text font-semibold text-xl">Blog Title</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Blog Title"
+            name="title"
+            className="input input-bordered"
+            required
+          />
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text font-bold text-lg">Content</span>
+          </label>
+          {/* <textarea
           type="textArea"
           placeholder="blog content"
           name="content"
           className="textarea textarea-bordered h-36"
           required
         /> */}
-        <JoditEditor
-          ref={editor}
-          value={content}
-          onChange={(newContent) => {
-            setContent(newContent);
-          }}
-        />
-      </div>
-      <div className="form-control mt-6">
-        <button className="btn btn-primary font-bold text-xl">Add Blog</button>
-      </div>
-    </form>
+          <JoditEditor
+            ref={editor}
+            value={content}
+            onChange={(newContent) => {
+              setContent(newContent);
+            }}
+          />
+        </div>
+        <div className="form-control mt-6">
+          <button className="btn bg-job text-white font-bold text-xl">
+            Add Blog
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 

@@ -29,7 +29,12 @@ function AppliedJobsTableRow({ job }) {
       </td>
 
       <td>
-        <Link to={`/jobs/${_id}`}>Details</Link>
+        <Link
+          to={`/jobs/${_id}`}
+          className="bg-job text-white px-6 py-2 font-bold rounded-lg"
+        >
+          Details
+        </Link>
       </td>
     </tr>
   );

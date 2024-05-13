@@ -6,26 +6,88 @@ import AppliedJobsTablerow from "../../components/AppliedJobsTableRow/AppliedJob
 function AppliedJobs() {
   const { user } = useContext(AuthContext);
   const [appliedJobs, setAppliedJobs] = useState([]);
-  console.log(appliedJobs);
+  const [filteredJobs, setFilteredJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const getData = async () => {
-    const result = await axios(
-      `${import.meta.env.VITE_API_URL}/jobs/apply/${user.email}`,
-      { withCredentials: true }
-    );
-    setAppliedJobs(result.data.jobs);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e);
+    const category = e.target.value;
+    if (category === "") {
+      setFilteredJobs(appliedJobs);
+    } else {
+      const newJobs = appliedJobs.filter((job) => job.jobCategory === category);
+      setFilteredJobs(newJobs);
+    }
   };
 
-  console.log(appliedJobs);
+  const fetchData = async () => {
+    try {
+      const result = await axios.get(
+        `${import.meta.env.VITE_API_URL}/jobs/apply/${user.email}`,
+        { withCredentials: true }
+      );
+      setAppliedJobs(result.data.jobs);
+      setFilteredJobs(result.data.jobs); // Default to all jobs
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const handleClearFilter = () => {
+    setFilteredJobs(appliedJobs); // Reset filter
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
-    <div className="mt-8">
-      <div className="overflow-x-auto">
+    <div className="mt-8 pb-16">
+      <h2 className="text-center text-job text-3xl font-bold mt-8 mb-8">
+        Applied Jobs
+      </h2>
+      <div className=" mb-8">
+        <form onSubmit={handleSubmit} className=" flex flex-col items-center">
+          <h2 className="text-lg mb-4 font-semibold">Select Category</h2>
+          <div className="flex gap-2 w-2/3 lg:w-1/3 justify-center">
+            <div className="w-full">
+              <select
+                name="category"
+                onChange={(e) => handleSubmit(e)}
+                className="select select-bordered w-full"
+              >
+                <option value="">All</option>
+                <option value="On Site">On Site</option>
+                <option value="Remote">Remote</option>
+                <option value="Part-Time">Part-Time</option>
+                <option value="Hybrid">Hybrid</option>
+              </select>
+            </div>
+            <button
+              type="button"
+              onClick={handleClearFilter}
+              className="btn bg-red-400 text-white font-semibold text-lg"
+            >
+              Clear Filter
+            </button>
+          </div>
+        </form>
+      </div>
+      <div className="overflow-x-auto font-semibold">
         <table className="table table-zebra">
-          {/* head */}
+          {/* Table header */}
           <thead>
             <tr>
               <th></th>
@@ -39,8 +101,8 @@ function AppliedJobs() {
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
-            {appliedJobs.map((job, i) => (
+            {/* Table rows */}
+            {filteredJobs.map((job, i) => (
               <AppliedJobsTablerow key={job._id} job={job} index={i + 1} />
             ))}
           </tbody>

@@ -3,8 +3,8 @@ import { Link, useLoaderData } from "react-router-dom";
 function Blogs() {
   const blogs = useLoaderData();
   return (
-    <div className="mt-8">
-      <div className="">
+    <div className=" custom-container">
+      <div className="mt-16">
         {blogs.map((blog) => (
           <div
             key={blog._id}

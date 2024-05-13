@@ -28,7 +28,10 @@ function MyJobs() {
   };
 
   return (
-    <div>
+    <div className="pb-16">
+      <h2 className="text-3xl text-job font-bold text-center mb-8 mt-8">
+        My Jobs
+      </h2>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}

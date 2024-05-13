@@ -63,8 +63,8 @@ function AddJob() {
     }
   };
   return (
-    <div className="">
-      <h2 className="text-2xl text-job font-bold text-center mb-8">
+    <div className="mt-8">
+      <h2 className="text-3xl text-job font-bold text-center mb-8">
         Add a Job
       </h2>
       <form
