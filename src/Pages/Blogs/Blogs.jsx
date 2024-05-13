@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 function Blogs() {
   const blogs = useLoaderData();
   return (
-    <div className=" custom-container">
+    <div className=" custom-container dark:text-gray-400">
       <div className="mt-16">
         {blogs.map((blog) => (
           <div

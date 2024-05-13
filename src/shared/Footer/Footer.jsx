@@ -1,8 +1,8 @@
 import logo from "/title.jpg";
 function Footer() {
   return (
-    <div className="mt-20 pt-12 bg-job text-white px-[5%]">
-      <footer className="footer bg-job text-white px-10 py-4">
+    <div className="mt-20 pt-12 bg-job dark:bg-green-700 text-white px-[5%]">
+      <footer className="footer  text-white px-10 py-4">
         <aside className="items-center grid-flow-col gap-4">
           <img src={logo} alt="" className="h-8 w-8" />
           <p className="font-extrabold text-3xl">Webby</p>
@@ -45,7 +45,7 @@ function Footer() {
           </div>
         </nav>
       </footer>
-      <footer className="footer bg-job text-white p-10 text-lg font-semibold">
+      <footer className="footer  text-white p-10 text-lg font-semibold">
         <nav>
           <h6 className="footer-title">Jobs</h6>
           <a className="link link-hover">On Site</a>

@@ -89,7 +89,7 @@ function AppliedJobs() {
         <table className="table table-zebra">
           {/* Table header */}
           <thead>
-            <tr>
+            <tr className="dark:text-gray-400">
               <th></th>
               <th>Title</th>
               <th>Category</th>

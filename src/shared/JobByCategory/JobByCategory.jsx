@@ -4,7 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import JobByCategoryCard from "../../components/JobByCategoryCard/JobByCategoryCard";
 import { Link } from "react-router-dom";
-import { AttentionSeeker, Fade } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 function JobByCategory() {
   const [jobs, setJobs] = useState([]);
@@ -18,47 +18,47 @@ function JobByCategory() {
   return (
     <div className="text-center">
       <div className="mb-8">
-        <h3 className="text-4xl font-bold bg-job text-white py-16">
+        <h3 className="text-4xl font-bold bg-job dark:bg-green-700 text-white py-16">
           Explore Types of jobs
         </h3>
       </div>
-      <Tabs className={"custom-container"}>
+      <Tabs className={"custom-container "}>
         <TabList
           className={
-            "bg-white max-w-2xl shadow-md mx-auto py-4 rounded-lg mb-8 flex justify-evenly"
+            "bg-white dark:bg-gray-700 max-w-2xl shadow-md mx-auto py-4 rounded-lg mb-8 flex justify-evenly"
           }
         >
           <Tab
             className={
-              "border-job border-2 cursor-pointer px-4 py-2 rounded-lg"
+              "border-job dark:text-white border-2 cursor-pointer px-4 py-2 rounded-lg"
             }
           >
             On Site
           </Tab>
           <Tab
             className={
-              "border-job border-2 cursor-pointer px-4 py-2 rounded-lg"
+              "border-job dark:text-white border-2 cursor-pointer px-4 py-2 rounded-lg"
             }
           >
             Remote
           </Tab>
           <Tab
             className={
-              "border-job border-2 cursor-pointer px-4 py-2 rounded-lg"
+              "border-job dark:text-white border-2 cursor-pointer px-4 py-2 rounded-lg"
             }
           >
             Part-Time
           </Tab>
           <Tab
             className={
-              "border-job border-2 cursor-pointer px-4 py-2 rounded-lg"
+              "border-job dark:text-white border-2 cursor-pointer px-4 py-2 rounded-lg"
             }
           >
             Hybrid
           </Tab>
           <Tab
             className={
-              "border-job border-2 cursor-pointer px-4 py-2 rounded-lg"
+              "border-job dark:text-white border-2 cursor-pointer px-4 py-2 rounded-lg"
             }
           >
             All Jobs

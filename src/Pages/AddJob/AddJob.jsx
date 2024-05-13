@@ -63,7 +63,7 @@ function AddJob() {
     }
   };
   return (
-    <div className="mt-8">
+    <div className="mt-8 ">
       <h2 className="text-3xl text-job font-bold text-center mb-8">
         Add a Job
       </h2>
@@ -73,19 +73,19 @@ function AddJob() {
       >
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Title</span>
+            <span className="label-text dark:text-gray-400">Title</span>
           </label>
           <input
             type="text"
             placeholder="Job Title"
             name="title"
-            className="input input-bordered"
+            className="input input-bordered "
             required
           />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Photo URL</span>
+            <span className="label-text dark:text-gray-400">Photo URL</span>
           </label>
           <input
             type="text"
@@ -105,7 +105,7 @@ function AddJob() {
         <div className="flex gap-4">
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Min Salary</span>
+              <span className="label-text dark:text-gray-400">Min Salary</span>
             </label>
             <input
               type="number"
@@ -117,7 +117,7 @@ function AddJob() {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Max Salary</span>
+              <span className="label-text dark:text-gray-400">Max Salary</span>
             </label>
             <input
               type="number"
@@ -130,7 +130,7 @@ function AddJob() {
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Description</span>
+            <span className="label-text dark:text-gray-400">Description</span>
           </label>
           <input
             type="text"
@@ -143,7 +143,9 @@ function AddJob() {
         <div className="flex gap-4">
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Posting Date</span>
+              <span className="label-text dark:text-gray-400">
+                Posting Date
+              </span>
             </label>
             <DatePicker
               selected={startDate}
@@ -156,7 +158,7 @@ function AddJob() {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Deadline</span>
+              <span className="label-text dark:text-gray-400">Deadline</span>
             </label>
             <DatePicker
               showIcon

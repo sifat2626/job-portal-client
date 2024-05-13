@@ -1,14 +1,26 @@
-import { useContext } from "react";
+/* eslint-disable react/prop-types */
+import { useContext, useState } from "react";
 import logo from "/title.jpg";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
 import { FaPlusSquare } from "react-icons/fa";
+import { IoMoon, IoSunny } from "react-icons/io5";
+import { getLocalTheme, setLocalTheme } from "../../utils/localStorage";
 function Navbar() {
   const { user, logOut } = useContext(AuthContext);
+  const [dark, setDark] = useState(() => {
+    return getLocalTheme() === "light";
+  });
+
+  const darkModeHandler = () => {
+    console.log(getLocalTheme());
+    setDark(!dark);
+    setLocalTheme(!dark === "ligth" ? "light" : "dark");
+    document.body.classList.toggle("dark");
+  };
   const navLinkStyles = ({ isActive }) => {
     return {
       color: isActive ? "#4BCC5A" : "",
-      backgroundColor: isActive ? "white" : "",
     };
   };
   const navList = (
@@ -43,7 +55,7 @@ function Navbar() {
     </>
   );
   return (
-    <div className="navbar px-[5%] py-4 shadow-md">
+    <div className="navbar bg-white dark:bg-green-700 px-[5%] py-4 shadow-md">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -71,7 +83,10 @@ function Navbar() {
         </div>
         <div className="flex gap-2 items-center">
           <img src={logo} alt="" className="h-8 w-8" />
-          <Link to={"/"} className="text-xl font-bold text-job">
+          <Link
+            to={"/"}
+            className="text-xl font-bold text-job dark:text-gray-200"
+          >
             Gable
           </Link>
         </div>
@@ -80,6 +95,16 @@ function Navbar() {
         <ul className="flex gap-6 px-1">{navList}</ul>
       </div>
       <div className="navbar-end">
+        <div className="mr-4">
+          <button onClick={() => darkModeHandler()}>
+            {
+              dark && <IoSunny /> // render sunny when dark is true
+            }
+            {
+              !dark && <IoMoon /> // render moon when dark is false
+            }
+          </button>
+        </div>
         {!user && (
           <ul className="flex items-center gap-4">
             <li className=" ">

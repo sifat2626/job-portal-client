@@ -76,7 +76,9 @@ function UpdateJob() {
       >
         <div className="form-control">
           <label className="label">
-            <span className="label-text text-lg font-semibold">Title</span>
+            <span className="label-text dark:text-gray-400 text-lg font-semibold">
+              Title
+            </span>
           </label>
           <input
             type="text"
@@ -88,7 +90,7 @@ function UpdateJob() {
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text ">Photo URL</span>
+            <span className="label-text dark:text-gray-400 ">Photo URL</span>
           </label>
           <input
             type="text"
@@ -118,7 +120,7 @@ function UpdateJob() {
         <div className="flex gap-4">
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Min Salary</span>
+              <span className="label-text dark:text-gray-400">Min Salary</span>
             </label>
             <input
               type="number"
@@ -131,7 +133,7 @@ function UpdateJob() {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Max Salary</span>
+              <span className="label-text dark:text-gray-400">Max Salary</span>
             </label>
             <input
               type="number"
@@ -145,7 +147,7 @@ function UpdateJob() {
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Description</span>
+            <span className="label-text dark:text-gray-400">Description</span>
           </label>
           <input
             type="text"
@@ -159,7 +161,9 @@ function UpdateJob() {
         <div className="flex gap-4">
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Posting Date</span>
+              <span className="label-text dark:text-gray-400">
+                Posting Date
+              </span>
             </label>
             <DatePicker
               selected={startDate}
@@ -173,7 +177,7 @@ function UpdateJob() {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Deadline</span>
+              <span className="label-text dark:text-gray-400">Deadline</span>
             </label>
             <DatePicker
               showIcon

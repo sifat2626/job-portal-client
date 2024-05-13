@@ -26,7 +26,7 @@ function AllJobs() {
   };
 
   return (
-    <div className="mt-16">
+    <div className="mt-16 dark:text-gray-400 font-bold">
       <div className="mb-8 ">
         <form
           className="flex max-w-md mx-auto gap-2 "
@@ -46,11 +46,11 @@ function AllJobs() {
           </button>
         </form>
       </div>
-      <div className="overflow-x-auto font-semibold">
-        <table className="table table-zebra">
+      <div className="overflow-x-auto ">
+        <table className="table table-zebra ">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="dark:text-gray-400">
               <th></th>
               <th>Title</th>
               <th>Posting Date</th>
