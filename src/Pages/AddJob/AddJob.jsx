@@ -64,8 +64,13 @@ function AddJob() {
   };
   return (
     <div className="">
-      <h2>Add a Job</h2>
-      <form onSubmit={(e) => handleSubmit(e)} className="card-body">
+      <h2 className="text-2xl text-job font-bold text-center mb-8">
+        Add a Job
+      </h2>
+      <form
+        onSubmit={(e) => handleSubmit(e)}
+        className="card-body border-job border-4 custom-container md:w-2/3 lg:w-1/3 rounded-xl text-lg font-semibold"
+      >
         <div className="form-control">
           <label className="label">
             <span className="label-text">Title</span>
@@ -91,38 +96,37 @@ function AddJob() {
           />
         </div>
         <label htmlFor="">Category</label>
-        <select
-          name="category"
-          className="select select-bordered w-full max-w-xs"
-        >
+        <select name="category" className="select select-bordered w-full">
           <option value={"On Site"}>On Site</option>
           <option value={"Remote"}>Remote</option>
           <option value={"Part-Time"}>Part-Time</option>
           <option value={"Hybrid"}>Hybrid</option>
         </select>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Min Salary</span>
-          </label>
-          <input
-            type="number"
-            placeholder="min. salary"
-            name="min_salary"
-            className="input input-bordered"
-            required
-          />
-        </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Max Salary</span>
-          </label>
-          <input
-            type="number"
-            placeholder="max. salary"
-            name="max_salary"
-            className="input input-bordered"
-            required
-          />
+        <div className="flex gap-4">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Min Salary</span>
+            </label>
+            <input
+              type="number"
+              placeholder="min. salary"
+              name="min_salary"
+              className="input input-bordered w-full"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Max Salary</span>
+            </label>
+            <input
+              type="number"
+              placeholder="max. salary"
+              name="max_salary"
+              className="input input-bordered w-full"
+              required
+            />
+          </div>
         </div>
         <div className="form-control">
           <label className="label">
@@ -136,31 +140,39 @@ function AddJob() {
             required
           />
         </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Posting Date</span>
-          </label>
-          <DatePicker
-            selected={startDate}
-            showIcon
-            dateFormat="dd/MM/yyyy"
-            onChange={(date) => setStartDate(date)}
-          />
-        </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Deadline</span>
-          </label>
-          <DatePicker
-            showIcon
-            dateFormat="dd/MM/yyyy"
-            minDate={startDate}
-            selected={deadLine}
-            onChange={(date) => setdeadLine(date)}
-          />
+        <div className="flex gap-4">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Posting Date</span>
+            </label>
+            <DatePicker
+              selected={startDate}
+              showIcon
+              toggleCalendarOnIconClick
+              className="w-full ml-2 -mt-1"
+              dateFormat="dd/MM/yyyy"
+              onChange={(date) => setStartDate(date)}
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Deadline</span>
+            </label>
+            <DatePicker
+              showIcon
+              toggleCalendarOnIconClick
+              className="w-full ml-2 -mt-1"
+              dateFormat="dd/MM/yyyy"
+              minDate={startDate}
+              selected={deadLine}
+              onChange={(date) => setdeadLine(date)}
+            />
+          </div>
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Add Job</button>
+          <button className="btn bg-job text-white text-lg font-semibold">
+            Add Job
+          </button>
         </div>
       </form>
     </div>

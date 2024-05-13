@@ -58,7 +58,7 @@ function ResumeModal({ id, job, setJob }) {
           <form onSubmit={(e) => handleSubmit(e)} className="card-body">
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Name</span>
+                <span className="label-text text-xl font-semibold">Name</span>
               </label>
               <input
                 type="name"
@@ -71,7 +71,7 @@ function ResumeModal({ id, job, setJob }) {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text font-semibold text-xl">Email</span>
               </label>
               <input
                 type="email"
@@ -84,7 +84,9 @@ function ResumeModal({ id, job, setJob }) {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Resume URL</span>
+                <span className="label-text text-xl font-semibold">
+                  Resume URL
+                </span>
               </label>
               <input
                 type="text"
@@ -95,7 +97,9 @@ function ResumeModal({ id, job, setJob }) {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Apply</button>
+              <button className="btn bg-job text-white font-semibold text-xl">
+                Apply
+              </button>
             </div>
           </form>
         </div>

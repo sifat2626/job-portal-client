@@ -67,23 +67,28 @@ function UpdateJob() {
   };
   return (
     <div className="">
-      <h2>Update Job</h2>
-      <form onSubmit={(e) => handleSubmit(e)} className="card-body">
+      <h2 className="text-2xl text-job font-bold text-center mb-8">
+        Update Job
+      </h2>
+      <form
+        onSubmit={(e) => handleSubmit(e)}
+        className="card-body border-job border-4 custom-container md:w-2/3 lg:w-1/3 rounded-xl text-lg font-semibold"
+      >
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Title</span>
+            <span className="label-text text-lg font-semibold">Title</span>
           </label>
           <input
             type="text"
             defaultValue={job.jobTitle}
             name="title"
-            className="input input-bordered"
+            className="input input-bordered font-semibold"
             required
           />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Photo URL</span>
+            <span className="label-text ">Photo URL</span>
           </label>
           <input
             type="text"
@@ -94,42 +99,49 @@ function UpdateJob() {
             required
           />
         </div>
-        <label htmlFor="">Category</label>
-        <select
-          name="category"
-          defaultValue={job.jobCategory}
-          className="select select-bordered w-full max-w-xs"
-        >
-          <option value={"On Site"}>On Site</option>
-          <option value={"Remote"}>Remote</option>
-          <option value={"Part-Time"}>Part-Time</option>
-          <option value={"Hybrid"}>Hybrid</option>
-        </select>
         <div className="form-control">
-          <label className="label">
-            <span className="label-text">Min Salary</span>
+          <label htmlFor="" className="mb-2">
+            Category
           </label>
-          <input
-            type="number"
-            placeholder="min. salary"
-            defaultValue={job.min_salary}
-            name="min_salary"
-            className="input input-bordered"
-            required
-          />
+          <select
+            name="category"
+            defaultValue={job.jobCategory}
+            className="select select-bordered w-full "
+          >
+            <option value={"On Site"}>On Site</option>
+            <option value={"Remote"}>Remote</option>
+            <option value={"Part-Time"}>Part-Time</option>
+            <option value={"Hybrid"}>Hybrid</option>
+          </select>
         </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Max Salary</span>
-          </label>
-          <input
-            type="number"
-            placeholder="max. salary"
-            defaultValue={job.max_salary}
-            name="max_salary"
-            className="input input-bordered"
-            required
-          />
+
+        <div className="flex gap-4">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Min Salary</span>
+            </label>
+            <input
+              type="number"
+              placeholder="min. salary"
+              defaultValue={job.min_salary}
+              name="min_salary"
+              className="input input-bordered w-full"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Max Salary</span>
+            </label>
+            <input
+              type="number"
+              placeholder="max. salary"
+              defaultValue={job.max_salary}
+              name="max_salary"
+              className="input input-bordered w-full"
+              required
+            />
+          </div>
         </div>
         <div className="form-control">
           <label className="label">
@@ -144,33 +156,41 @@ function UpdateJob() {
             required
           />
         </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Posting Date</span>
-          </label>
-          <DatePicker
-            selected={startDate}
-            defaultValue={job.jobPostingDate}
-            showIcon
-            dateFormat="dd/MM/yyyy"
-            onChange={(date) => setStartDate(date)}
-          />
-        </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Deadline</span>
-          </label>
-          <DatePicker
-            showIcon
-            dateFormat="dd/MM/yyyy"
-            defaultValue={job.applicationDeadline}
-            minDate={startDate}
-            selected={deadLine}
-            onChange={(date) => setDeadLine(date)}
-          />
+        <div className="flex gap-4">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Posting Date</span>
+            </label>
+            <DatePicker
+              selected={startDate}
+              defaultValue={job.jobPostingDate}
+              showIcon
+              toggleCalendarOnIconClick
+              className="w-full ml-2 -mt-1"
+              dateFormat="dd/MM/yyyy"
+              onChange={(date) => setStartDate(date)}
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Deadline</span>
+            </label>
+            <DatePicker
+              showIcon
+              toggleCalendarOnIconClick
+              dateFormat="dd/MM/yyyy"
+              className="w-full ml-2 -mt-1"
+              defaultValue={job.applicationDeadline}
+              minDate={startDate}
+              selected={deadLine}
+              onChange={(date) => setDeadLine(date)}
+            />
+          </div>
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Update Job</button>
+          <button className="btn bg-job text-white text-lg font-semibold">
+            Update Job
+          </button>
         </div>
       </form>
     </div>

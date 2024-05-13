@@ -57,7 +57,7 @@ function MyJobsTableRow({ job }) {
   } = job;
 
   return (
-    <tr>
+    <tr className="font-semibold">
       <td></td>
       <td>{jobTitle}</td>
       <td>{jobCategory}</td>
@@ -74,7 +74,7 @@ function MyJobsTableRow({ job }) {
       </td>
       <td>
         <button onClick={handleDelete}>
-          <MdDelete />
+          <MdDelete className="text-red-500 text-lg" />
         </button>
       </td>
     </tr>
