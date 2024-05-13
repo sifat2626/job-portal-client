@@ -1,5 +1,8 @@
+/* eslint-disable no-unused-vars */
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import { formatDate } from "../../utils/utils";
 import { Link } from "react-router-dom";
+import MyDocument from "../Pdf/MyDocument";
 // Import for mutations
 
 /* eslint-disable react/prop-types */
@@ -26,6 +29,17 @@ function AppliedJobsTableRow({ job }) {
       <td>{formatDate(applicationDeadline)}</td>
       <td>
         $ {min_salary} - {max_salary}
+      </td>
+      <td>
+        <PDFDownloadLink
+          document={<MyDocument />}
+          fileName="job.pdf"
+          className="bg-job text-white px-6 py-2 font-bold rounded-lg"
+        >
+          {({ blob, url, loading, error }) =>
+            loading ? "Loading document..." : "Download"
+          }
+        </PDFDownloadLink>
       </td>
 
       <td>

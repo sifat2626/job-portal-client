@@ -97,6 +97,7 @@ function AppliedJobs() {
               <th>Posted On</th>
               <th>Deadline</th>
               <th>Salary Range</th>
+              <th>Pdf</th>
               <th>Action</th>
             </tr>
           </thead>
