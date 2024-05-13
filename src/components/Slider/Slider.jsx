@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import { motion } from "framer-motion";
+
 function Slider({ img }) {
   return (
     <div
@@ -7,9 +9,14 @@ function Slider({ img }) {
     >
       <div className="absolute inset-0 bg-black/70"></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <h3 className="text-6xl font-extrabold text-white">
+        <motion.h3
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5 }}
+          className="text-6xl font-extrabold text-white"
+        >
           Find Your <span className="text-job">Desired</span> Job
-        </h3>
+        </motion.h3>
         <h6 className="text-2xl text-white mt-4 font-semibold">
           Jobs, Employment & Future Career Opportunities
         </h6>

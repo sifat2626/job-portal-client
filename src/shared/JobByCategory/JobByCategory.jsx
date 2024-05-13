@@ -15,17 +15,18 @@ function JobByCategory() {
     const res = await axios(`${import.meta.env.VITE_API_URL}/jobs`);
     setJobs(res.data.jobs);
   };
+
   return (
-    <div className="text-center">
-      <div className="mb-8">
-        <h3 className="text-4xl font-bold bg-job dark:bg-green-700 text-white py-16">
+    <div className="text-center mt-16">
+      <div className="mb-8 ">
+        <h3 className="text-4xl font-bold text-green-700 dark:text-green-200 py-8">
           Explore Types of jobs
         </h3>
       </div>
       <Tabs className={"max-w-6xl mx-auto px-2"}>
         <TabList
           className={
-            "bg-white dark:bg-gray-700 max-w-2xl shadow-md mx-auto py-4 rounded-lg mb-8 flex justify-evenly"
+            "bg-white dark:bg-gray-700 max-w-2xl shadow-md mx-auto py-4 rounded-lg mb-16 flex justify-evenly"
           }
         >
           <Tab
