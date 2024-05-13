@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import JobByCategoryCard from "../../components/JobByCategoryCard/JobByCategoryCard";
 import { Link } from "react-router-dom";
+import { AttentionSeeker, Fade } from "react-awesome-reveal";
 
 function JobByCategory() {
   const [jobs, setJobs] = useState([]);
@@ -21,67 +22,111 @@ function JobByCategory() {
           Explore Types of jobs
         </h3>
       </div>
-      <Tabs className={"p-8"}>
-        <TabList>
-          <Tab>On Site</Tab>
-          <Tab>Remote</Tab>
-          <Tab>Part-Time</Tab>
-          <Tab>Hybrid</Tab>
-          <Tab>All Jobs</Tab>
+      <Tabs className={"custom-container"}>
+        <TabList
+          className={
+            "bg-white max-w-2xl shadow-md mx-auto py-4 rounded-lg mb-8 flex justify-evenly"
+          }
+        >
+          <Tab
+            className={
+              "border-job border-2 cursor-pointer px-4 py-2 rounded-lg"
+            }
+          >
+            On Site
+          </Tab>
+          <Tab
+            className={
+              "border-job border-2 cursor-pointer px-4 py-2 rounded-lg"
+            }
+          >
+            Remote
+          </Tab>
+          <Tab
+            className={
+              "border-job border-2 cursor-pointer px-4 py-2 rounded-lg"
+            }
+          >
+            Part-Time
+          </Tab>
+          <Tab
+            className={
+              "border-job border-2 cursor-pointer px-4 py-2 rounded-lg"
+            }
+          >
+            Hybrid
+          </Tab>
+          <Tab
+            className={
+              "border-job border-2 cursor-pointer px-4 py-2 rounded-lg"
+            }
+          >
+            All Jobs
+          </Tab>
         </TabList>
 
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6">
-            {jobs
-              .filter((job) => job.jobCategory === "On Site")
-              .map((filteredJob) => (
-                <JobByCategoryCard key={filteredJob._id} job={filteredJob} />
-              ))}
-          </div>
+          <Fade direction="left">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6">
+              {jobs
+                .filter((job) => job.jobCategory === "On Site")
+                .map((filteredJob) => (
+                  <JobByCategoryCard key={filteredJob._id} job={filteredJob} />
+                ))}
+            </div>
+          </Fade>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6">
-            {jobs
-              .filter((job) => job.jobCategory === "Remote")
-              .map((filteredJob) => (
-                <JobByCategoryCard key={filteredJob._id} job={filteredJob} />
-              ))}
-          </div>
+          <Fade direction="up">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6">
+              {jobs
+                .filter((job) => job.jobCategory === "Remote")
+                .map((filteredJob) => (
+                  <JobByCategoryCard key={filteredJob._id} job={filteredJob} />
+                ))}
+            </div>
+          </Fade>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6">
-            {jobs
-              .filter((job) => job.jobCategory === "Part Time")
-              .map((filteredJob) => (
-                <JobByCategoryCard key={filteredJob._id} job={filteredJob} />
-              ))}
-          </div>
+          <Fade direction="right">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6">
+              {jobs
+                .filter((job) => job.jobCategory === "Part Time")
+                .map((filteredJob) => (
+                  <JobByCategoryCard key={filteredJob._id} job={filteredJob} />
+                ))}
+            </div>
+          </Fade>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6">
-            {jobs
-              .filter((job) => job.jobCategory === "Hybrid")
-              .map((filteredJob) => (
-                <JobByCategoryCard key={filteredJob._id} job={filteredJob} />
-              ))}
-          </div>
+          <Fade direction="down">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6">
+              {jobs
+                .filter((job) => job.jobCategory === "Hybrid")
+                .map((filteredJob) => (
+                  <JobByCategoryCard key={filteredJob._id} job={filteredJob} />
+                ))}
+            </div>
+          </Fade>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6">
-            {jobs.slice(0, 7).map((filteredJob) => (
-              <JobByCategoryCard key={filteredJob._id} job={filteredJob} />
-            ))}
-            {jobs.length > 7 && (
-              <div className="flex items-center justify-center ">
-                <Link
-                  to="/all-jobs"
-                  className="px-4 py-2 bg-green-400 font-medium text-white rounded-lg"
-                >
-                  View More...
-                </Link>
-              </div>
-            )}
-          </div>
+          <Fade direction="right">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6">
+              {jobs.slice(0, 5).map((filteredJob) => (
+                <JobByCategoryCard key={filteredJob._id} job={filteredJob} />
+              ))}
+              {jobs.length > 5 && (
+                <div className="flex items-center justify-center ">
+                  <Link
+                    to="/all-jobs"
+                    className="px-4 py-2 bg-green-400 font-medium text-white rounded-lg"
+                  >
+                    View More...
+                  </Link>
+                </div>
+              )}
+            </div>
+          </Fade>
         </TabPanel>
       </Tabs>
     </div>

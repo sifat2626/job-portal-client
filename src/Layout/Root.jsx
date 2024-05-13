@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 function Root() {
   return (
     <div className="">
-      <div className=" sticky top-0 z-50 bg-white">
+      <div className=" sticky top-0 z-50 bg-white ">
         <Navbar />
       </div>
       <Outlet />
